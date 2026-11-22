@@ -8,9 +8,18 @@ This project creates a web application where users can input job postings to det
 
 To achieve this, a Kaggle dataset of job postings with fraudulent marked, was was used to train a RAG LLM.
 
-**add more stuff here about what we are doing**
+***add more stuff here about what we are doing***
 
 ## Project Breakdown
+
+### Infrastructure: Docker and Supabase
+
+- **Storage:** hosted Supabase (Postgres, with pgvector enabled for embeddings). All column names are lowercase.
+- **Docker:** `docker-compose.yml` runs the FastAPI service (`api`) and a one-off Supabase check (`check-db`). There is no database container, since Supabase is hosted.
+- **Config:** copy `.env.example` to `.env` and add the Supabase connection string. `.env` is git-ignored
+- **Run it:** `docker compose run --rm check-db` to test the connection, `docker compose up --build` to start the API (`/health`, `/health/db`).
+
+Full setup steps are in [SETUP.md](SETUP.md).
 
 ### Raw Data
 
@@ -30,7 +39,6 @@ This contains all columns pertaining to company details
 - `linkedin_presence`
 - `website_available`
 - `dmoain_age_months`
-
 
 #### Table 2: Recruiter details
 

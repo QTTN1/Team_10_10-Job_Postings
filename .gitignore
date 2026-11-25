@@ -5,3 +5,4 @@ __pycache__/
 node_modules/
 data/processed/
 .ipynb_checkpoints/
+data/raw/fake_internship_detection_dataset.csv
